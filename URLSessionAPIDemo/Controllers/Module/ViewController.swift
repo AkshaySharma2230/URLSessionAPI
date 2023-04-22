@@ -94,6 +94,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = dataArray[indexPath.row]
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShowDetailVC") as! ShowDetailVC
+        vc.userId = "id: \(data.id ?? 0)"
+        vc.name = "Name: \(data.name ?? "")"
+        vc.email = "Email: \(data.email ?? "")"
+        vc.gender = "Gender: \(data.gender ?? "")"
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
